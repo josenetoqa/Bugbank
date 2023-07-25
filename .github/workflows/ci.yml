@@ -1,31 +1,23 @@
-name: Cypress E2E Tests on Chrome, Firefox and Edge browsers
+name: Artifacts
 on: push
 jobs:
-#Run on Chrome cypress tests
-  chrome:
+  cypress-run:
     runs-on: ubuntu-22.04
-    name: E2E on Chrome
+    name: Artifacts
     steps:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v5
+      # after the test run completes store videos and any screenshots
+      - uses: actions/upload-artifact@v3
+        # add the line below to store screenshots only on failures
+        # if: failure()
         with:
-          browser: chrome
-# Run On firefox cypress tests
-  firefox:
-    runs-on: ubuntu-22.04
-    name: E2E on Firefox
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cypress-io/github-action@v5
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
+      - uses: actions/upload-artifact@v3
         with:
-          browser: firefox
-# Run On firefox cypress tests           
-  edge:
-    runs-on: ubuntu-22.04
-    name: E2E on Edge
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cypress-io/github-action@v5
-        with:
-          browser: edge
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
    

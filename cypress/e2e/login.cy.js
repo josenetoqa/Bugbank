@@ -6,7 +6,7 @@ describe('Login', () => {
     it('Verify that valid and registered users will be redirected to the home page', () => {
         cy.userregistration_login('jose@qa.com','jose','123456678', '123456678')
         cy.login('jose@qa.com','123456678')
-        cy.url().should('eq','https://bugbank.netlify.app/home')
+        cy.url().should('eq','https://bugbank.netlify.app/hom')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
         cy.get('@numero').then(code => {
             cy.get('#textAccountNumber').should('include.text', code)
