@@ -28,6 +28,12 @@ jobs:
       - uses: cypress-io/github-action@v5
         with:
           browser: edge        
+  cypress-run:
+    runs-on: ubuntu-22.04
+    name: Artifacts poof
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
       # after the test run completes store videos and any screenshots
       - uses: actions/upload-artifact@v3
         # add the line below to store screenshots only on failures
