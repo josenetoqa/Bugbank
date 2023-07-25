@@ -10,7 +10,7 @@ describe('Registration', () => {
         })
         cy.get('#btnCloseModal').click()
     })
-    it.only('Verify that the "Create account with balance" option creates an account with a balance of R$ 1,000.00', () => {
+    it('Verify that the "Create account with balance" option creates an account with a balance of R$ 1,000.00', () => {
         cy.userregistration('jose@qa.com','jose','123456678', '123456678')
         cy.get('#modalText').should('be.visible')
         cy.get('#btnCloseModal').click()

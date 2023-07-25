@@ -85,3 +85,40 @@ Cypress.Commands.add('login', (email, password) => {
         cy.get('.otUnI').click()
     })
   })
+Cypress.Commands.add('login_no_password', (email) => {
+    cy.visit('/')
+    cy.get('div[class="card__login"]').within ( () => {
+      cy.get('input[name="email"]').type(email,{force: true, log: false})
+      cy.get('.otUnI').click()
+  })
+})
+Cypress.Commands.add('login_no_email', (password) => {
+    cy.visit('/')
+    cy.get('div[class="card__login"]').within ( () => {
+        cy.get('input[name="password"]').type(password,{force: true, log: false})
+        cy.get('.otUnI').click()
+    })
+})
+
+Cypress.Commands.add('userregistration_login', (email,name,password,passwordConfirmation)=> {
+    cy.get('.ihdmxA').click()
+    cy.get('div[class="card__register').within( () => {
+        cy.get('input[name="email"]').type(email,{force: true, log: false})
+        cy.get('input[name="name"]').type(name,{force: true, log: false})
+        cy.get('input[name="password"]').type(password,{force: true, log: false})
+        cy.get('input[name="passwordConfirmation"]').type(passwordConfirmation,{force: true, log: false})
+        })
+        cy.get('#toggleAddBalance').click({force: true})
+        cy.get('.CMabB').click({force: true})
+        cy.get('p', {log: false})
+    .contains(new RegExp('^A conta \\d+-\\d+ foi criada com sucesso$'), {log: false})
+    .then({log:false}, elem => {
+      const match = elem.text().match(new RegExp('\\d+-\\d+'))[0];
+      const numero = match.split('-')[0];
+      const digito = match.split('-')[1];
+
+      cy.wrap(digito).as('digito')
+      cy.wrap(numero).as('numero')
+    })
+    cy.get('#btnCloseModal').click()
+})
