@@ -9,7 +9,7 @@
   },
   "author": "Jose Neto",
   "license": "ISC",
-  "dependencies": {
-    "cypress": "^12.17.1"
+  "devDependencies": {
+    "cypress": "^12.17.2"
   }
 }
