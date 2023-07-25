@@ -151,6 +151,27 @@ Cypress.Commands.add('transfer', (value,description) => {
  cy.get('.styles__ContainerFormTransfer-sc-1oow0wh-0 > :nth-child(2) > .input__default').type(value)
  cy.get(':nth-child(3) > .input__default').type(description)
  cy.get('.style__ContainerButton-sc-1wsixal-0').click()
- cy.get('#btnCloseModal').click()
- cy.get('#btnBack').click()
+})
+Cypress.Commands.add('transferinvalid', (value,description,num_account,num_digit) => {
+    cy.get('#btn-TRANSFERÊNCIA').click()
+    cy.get('.account__data').within( () => {
+        cy.get('input[name="accountNumber"]').type(num_account)
+        cy.get('input[name="digit"]').type(num_digit)
+    })  
+ cy.get('.styles__ContainerFormTransfer-sc-1oow0wh-0 > :nth-child(2) > .input__default').type(value)
+ cy.get(':nth-child(3) > .input__default').type(description)
+ cy.get('.style__ContainerButton-sc-1wsixal-0').click()
+})
+Cypress.Commands.add('transferdescription', (value) => {
+    cy.get('#btn-TRANSFERÊNCIA').click()
+    cy.get('.account__data').within( () => {
+        cy.get('@numero').then(num_account => {
+             cy.get('input[name="accountNumber"]').type(num_account)
+        })
+        cy.get('@digito').then(num_digit => {
+         cy.get('input[name="digit"]').type(num_digit)
+    })  
+ })
+ cy.get('.styles__ContainerFormTransfer-sc-1oow0wh-0 > :nth-child(2) > .input__default').type(value)
+ cy.get('.style__ContainerButton-sc-1wsixal-0').click()
 })
