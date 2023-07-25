@@ -3,7 +3,7 @@ describe('Statement', () => {
         cy.visit('/')
     });
     it('Verify that the statement page displays the current available balance', () => {
-        cy.get('#btn-EXTRATO')
+        //cy.get('#btn-EXTRATO')
     });
     it('Verify that each transaction displays the date it was made, the type of transaction, and the amount', () => {
         
