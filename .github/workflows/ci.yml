@@ -31,7 +31,6 @@ jobs:
       - uses: cypress-io/github-action@v5
         with:
           browser: edge
-with:
           name: cypress-screenshots
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
