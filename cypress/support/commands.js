@@ -78,7 +78,6 @@ Cypress.Commands.add('userregistratio_d_password', (email,name,password,password
         cy.get('.CMabB').click({force: true})
 })
 Cypress.Commands.add('login', (email, password) => {
-      cy.visit('/')
       cy.get('div[class="card__login"]').within ( () => {
         cy.get('input[name="email"]').type(email,{force: true, log: false})
         cy.get('input[name="password"]').type(password,{force: true, log: false})
@@ -86,20 +85,17 @@ Cypress.Commands.add('login', (email, password) => {
     })
   })
 Cypress.Commands.add('login_no_password', (email) => {
-    cy.visit('/')
     cy.get('div[class="card__login"]').within ( () => {
       cy.get('input[name="email"]').type(email,{force: true, log: false})
       cy.get('.otUnI').click()
   })
 })
 Cypress.Commands.add('login_no_email', (password) => {
-    cy.visit('/')
     cy.get('div[class="card__login"]').within ( () => {
         cy.get('input[name="password"]').type(password,{force: true, log: false})
         cy.get('.otUnI').click()
     })
 })
-
 Cypress.Commands.add('userregistration_login', (email,name,password,passwordConfirmation)=> {
     cy.get('.ihdmxA').click()
     cy.get('div[class="card__register').within( () => {
@@ -116,7 +112,6 @@ Cypress.Commands.add('userregistration_login', (email,name,password,passwordConf
       const match = elem.text().match(new RegExp('\\d+-\\d+'))[0];
       const numero = match.split('-')[0];
       const digito = match.split('-')[1];
-
       cy.wrap(digito).as('digito')
       cy.wrap(numero).as('numero')
     })
