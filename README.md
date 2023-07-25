@@ -1,6 +1,6 @@
 
 <h1 align="center"> 
-  Bug Bank
+  Bug Bank Automation Tests with Cypress
 </h1>
 
 <h4 align="center">A bank website for study software testing</h4>
