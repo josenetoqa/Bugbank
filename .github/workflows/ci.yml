@@ -1,6 +1,7 @@
-name: Chrome
+name: Cypress E2E Tests on Chrome, Firefox and Edge browsers
 on: push
 jobs:
+#Run on Chrome cypress tests
   chrome:
     runs-on: ubuntu-22.04
     name: E2E on Chrome
@@ -9,6 +10,9 @@ jobs:
       - uses: cypress-io/github-action@v5
         with:
           browser: chrome
+          browser: firefox
+           browser: edge
+# Run On firefox cypress tests
   firefox:
     runs-on: ubuntu-22.04
     name: E2E on Firefox
@@ -16,7 +20,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v5
         with:
-          browser: firefox
+        browser: firefox
+# Run On edge cypress tests           
   edge:
     runs-on: ubuntu-22.04
     name: E2E on Edge
@@ -25,11 +30,3 @@ jobs:
       - uses: cypress-io/github-action@v5
         with:
           browser: edge
-          name: cypress-screenshots
-          path: cypress/screenshots
-          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
-      - uses: actions/upload-artifact@v3
-        with:
-          name: cypress-videos
-          path: cypress/videos
-          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
