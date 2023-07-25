@@ -1,4 +1,4 @@
-##name: Cypress E2E Tests on Chrome, Firefox and Edge browsers
+name: Cypress E2E Tests on Chrome, Firefox and Edge browsers
 on: push
 jobs:
 #Run on Chrome cypress tests
