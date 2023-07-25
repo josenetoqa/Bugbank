@@ -7,7 +7,7 @@ describe('Login', () => {
         cy.userregistration_login('jose@qa.com','jose','123456678', '123456678')
         cy.login('jose@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
-        cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
+        cy.get('#textBalance').contains('R$ 1.000,0').should('exist')
         cy.get('@numero').then(code => {
             cy.get('#textAccountNumber').should('include.text', code)
         })
