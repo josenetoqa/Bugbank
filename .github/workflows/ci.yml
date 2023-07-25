@@ -9,7 +9,6 @@ jobs:
       - uses: cypress-io/github-action@v5
         with:
           browser: chrome
-name: Firefox
 on: push
 jobs:
   firefox:
@@ -20,7 +19,6 @@ jobs:
       - uses: cypress-io/github-action@v5
         with:
           browser: firefox
-name: Edge
 on: push
 jobs:
   edge:
