@@ -3,7 +3,7 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
-    name: Artifacts
+    name: E2E on Chrome with video and screenshot
     steps:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v5
@@ -16,6 +16,7 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
       - uses: actions/upload-artifact@v3
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos

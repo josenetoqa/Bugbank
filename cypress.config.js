@@ -6,4 +6,5 @@ module.exports = defineConfig({
     experimentalModifyObstructiveThirdPartyCode: true,
   },
     fixturesFolder: false,
+    video: true,
 })
