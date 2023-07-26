@@ -3,3 +3,4 @@ cypress/screenshots/
 cypress/videos/
 node_modules/
 /BDDfeatures
+cypress/reports
