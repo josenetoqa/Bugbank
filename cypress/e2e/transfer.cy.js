@@ -2,7 +2,7 @@ describe('Transfer', () => {
     beforeEach(() => {
         cy.visit('/')
     });
-    it('Verify that upon successful transfer, the amount from the account should be debited and the message "Transfer successfully completed" should be displayed', () => {
+    it.only('Verify that upon successful transfer, the amount from the account should be debited and the message "Transfer successfully completed" should be displayed', () => {
         const numc = 1000
         const num1 = 100
         const num2 = 100

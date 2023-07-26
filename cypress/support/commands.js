@@ -175,3 +175,32 @@ Cypress.Commands.add('transferdescription', (value) => {
  cy.get('.styles__ContainerFormTransfer-sc-1oow0wh-0 > :nth-child(2) > .input__default').type(value)
  cy.get('.style__ContainerButton-sc-1wsixal-0').click()
 })
+Cypress.Commands.add('logintest', (
+    user = 'jose@qa.com',
+    password = '123456678',
+    { cacheSession = true } = {},
+  ) => {
+    const login = () => {
+        cy.visit('/')
+        cy.userregistration_login('jose@qa.com','jose','123456678', '123456678')
+        cy.get('div[class="card__login"]').within ( () => {
+            cy.get('input[name="email"]').type(user,{force: true, log: false})
+            cy.get('input[name="password"]').type(password,{force: true, log: false})
+            cy.get('.otUnI').click()
+        })
+    }
+    const validate = () => {
+      cy.visit('/')
+      cy.location('pathname', { timeout: 1000 })
+        .should('not.eq', '/home')
+    }
+    const options = {
+      cacheAcrossSpecs: true,
+      validate,
+    }
+    if (cacheSession) {
+      cy.session(user, login, options)
+    } else {
+      login()
+    }
+  })
