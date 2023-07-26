@@ -99,7 +99,7 @@ describe('Transfer', () => {
         cy.get('#btnCloseModal').click()
         cy.get('#btnBack').click()
     });
-    it.only('Verify that the description field is a required field', () => {
+    it('Verify that the description field is a required field', () => {
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
         cy.userregistration_login('jose@qa.com','jose','123456678', '123456678')
         cy.login('jose2@qa.com','123456678')
