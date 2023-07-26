@@ -2,7 +2,7 @@ describe('Transfer', () => {
     beforeEach(() => {
         cy.visit('/')
     });
-    it.only('Verify that upon successful transfer, the amount from the account should be debited and the message "Transfer successfully completed" should be displayed', () => {
+    it('Verify that upon successful transfer, the amount from the account should be debited and the message "Transfer successfully completed" should be displayed', () => {
         const numc = 1000
         const num1 = 100
         const num2 = 100
@@ -63,7 +63,7 @@ describe('Transfer', () => {
         cy.transfer(num2,'-')
         cy.get('#modalText').should('include.text', 'Valor da transferência não pode ser 0 ou negativo')
         cy.get('#btnCloseModal').click()
-        cy.get('#btnBack').click()   
+        cy.get('#btnBack').click()
     });
     it('Verify that an attempt to transfer to an invalid account will display an error message "Invalid or non-existent account"', () => {
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
@@ -99,7 +99,7 @@ describe('Transfer', () => {
         cy.get('#btnCloseModal').click()
         cy.get('#btnBack').click()
     });
-    it('Verify that the description field is a required field', () => {
+    it.only('Verify that the description field is a required field', () => {
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
         cy.userregistration_login('jose@qa.com','jose','123456678', '123456678')
         cy.login('jose2@qa.com','123456678')
