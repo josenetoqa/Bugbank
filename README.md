@@ -330,6 +330,8 @@ This software uses the following open source npm packages:
 - [Node.js](https://nodejs.org/)
 - [Cypress](https://www.cypress.io/)
 - [Faker](https://www.npmjs.com/package/@faker-js/faker)
+- [Mochawesome](https://www.npmjs.com/package/cypress-mochawesome-reporter)
+- [Cypress terminal report](https://www.npmjs.com/package/cypress-terminal-report)
 
 ## QA Automation Engineer
 
