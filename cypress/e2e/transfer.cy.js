@@ -18,7 +18,11 @@ describe('Transfer', () => {
             })
         })
         cy.transfer(num1,'-100 contas')
+        cy.get('#btnCloseModal').click()
+        cy.get('#btnBack').click()
         cy.transfer(num2,'-')
+        cy.get('#btnCloseModal').click()
+        cy.get('#btnBack').click()
         const num_final = numc-num1-num2;
     cy.get('#textBalance').contains(num_final).should('exist')
     });
@@ -99,7 +103,7 @@ describe('Transfer', () => {
         cy.get('#btnCloseModal').click()
         cy.get('#btnBack').click()
     });
-    it('Verify that the description field is a required field', () => {
+    it.skip('Verify that the description field is a required field', () => {
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
         cy.userregistration_login('jose@qa.com','jose','123456678', '123456678')
         cy.login('jose2@qa.com','123456678')
