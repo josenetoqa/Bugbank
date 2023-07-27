@@ -22,7 +22,7 @@ describe('Transfer', () => {
         const num_final = numc-num1-num2;
     cy.get('#textBalance').contains(num_final).should('exist')
     });
-    it('Verify that transfer is only allowed when the balance is equal to or greater than the amount to be transferred', () => {
+        it('Verify that transfer is only allowed when the balance is equal to or greater than the amount to be transferred', () => {
         const num1 = 100
         const num2 = 1000
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
