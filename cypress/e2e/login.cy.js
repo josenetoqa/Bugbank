@@ -8,9 +8,7 @@ describe('Login', () => {
         cy.login('jose@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.get('@numero').then(code => {
-            cy.get('#textAccountNumber').should('include.text', code)
-        })
+        cy.verifyaccount()
     })
     it('Verify that invalid or un-registered users will not be authorized to login', () => {
         cy.login('jos1111e@qa.com','12345667899')
