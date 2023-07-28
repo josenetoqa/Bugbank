@@ -152,8 +152,6 @@ Cypress.Commands.add('transfer', (value,description) => {
     cy.get('.styles__ContainerFormTransfer-sc-1oow0wh-0 > :nth-child(2) > .input__default').type(value)
     cy.get(':nth-child(3) > .input__default').type(description)
     cy.get('.style__ContainerButton-sc-1wsixal-0').click()
-    cy.get('#btnCloseModal').click()
-    cy.get('#btnBack').click()
 })
 Cypress.Commands.add('transferinvalid', (value,description,num_account,num_digit) => {
     cy.get('#btn-TRANSFERÊNCIA').click()
@@ -183,6 +181,14 @@ Cypress.Commands.add('closemodal',  () => {
   cy.get('#btnBack').click()
 })
 Cypress.Commands.add('verifyaccount',  () => {
+  cy.get('@numero').then(code => {
+  cy.get('#textAccountNumber').should('include.text', code)
+  cy.get('@digito').then(code1 => {
+      cy.get('#textAccountNumber').should('include.text', code1)
+  })
+})
+})
+Cypress.Commands.add('verifyaccountsecond',  () => {
     cy.get('@numero_second').then(code => {
     cy.get('#textAccountNumber').should('include.text', code)
     cy.get('@digito_second').then(code1 => {

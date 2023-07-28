@@ -11,7 +11,7 @@ describe('Statement', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transfer(num1,'-100 contas')
         cy.closemodal()
         cy.transfer(num2,'-')
@@ -23,7 +23,7 @@ describe('Statement', () => {
         cy.get('.bank-statement__ContainerTransactions-sc-7n8vh8-8').within( () => {
         })
     });
-    it.only('Verify that each transaction displays the date it was made, the type of transaction, and the amount', () => {
+    it('Verify that each transaction displays the date it was made, the type of transaction, and the amount', () => {
         const numc = 1000
         const num1 = 120
         const num2 = 100
@@ -32,11 +32,11 @@ describe('Statement', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transfer(num1,'-100 contas')
-        
+        cy.closemodal()
         cy.transfer(num2,'-100 contas')
-     
+        cy.closemodal()
         const num_final = numc-num1-num2;
         cy.get('#textBalance').contains(num_final).should('exist')       
         cy.get('#btn-EXTRATO').click()
@@ -46,7 +46,7 @@ describe('Statement', () => {
         })
        
     });
-    it('Verify that the value of transactions that are out of the account is displayed in red and starts with the minus/negative sign (-)', () => {
+    it.only('Verify that the value of transactions that are out of the account is displayed in red and starts with the minus/negative sign (-)', () => {
         const numc = 1000
         const num1 = 150
         const num2 = 100
@@ -55,7 +55,7 @@ describe('Statement', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('be.visible')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transfer(num1,'-100 contas')
         cy.closemodal()
         cy.transfer(num2,'-')
@@ -64,8 +64,6 @@ describe('Statement', () => {
         cy.get('#textBalance').contains(num_final).should('be.visible')       
         cy.get('#btn-EXTRATO').click()
         cy.get('#textBalanceAvailable').contains(num_final).should('be.visible')
-        
-        
     });
     it('Verify that the value of transactions that are in the account is displayed in green', () => {
         

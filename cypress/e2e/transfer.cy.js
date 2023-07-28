@@ -11,13 +11,15 @@ describe('Transfer', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transfer(num1,'-100 contas')
+        cy.closemodal()
         cy.transfer(num2,'-')
+        cy.closemodal()
         const num_final = numc-num1-num2;
         cy.get('#textBalance').contains(num_final).should('exist')
     });
-        it('Verify that transfer is only allowed when the balance is equal to or greater than the amount to be transferred', () => {
+    it('Verify that transfer is only allowed when the balance is equal to or greater than the amount to be transferred', () => {
         const num1 = 100
         const num2 = 1000
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
@@ -25,10 +27,12 @@ describe('Transfer', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transfer(num1,'-100 contas')
+        cy.closemodal()
         cy.transfer(num2,'-')
         cy.get('#modalText').should('include.text', 'Você não tem saldo suficiente para essa transação')
+        cy.closemodal()
     });
     it('Verify that the transfer value cannot be equal to or less than zero', () => {
         const num1 = 0
@@ -38,11 +42,13 @@ describe('Transfer', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transfer(num1,'-100 contas')
         cy.get('#modalText').should('include.text', 'Valor da transferência não pode ser 0 ou negativo')
+        cy.closemodal()
         cy.transfer(num2,'-')
         cy.get('#modalText').should('include.text', 'Valor da transferência não pode ser 0 ou negativo')
+        cy.closemodal()
     });
     it('Verify that an attempt to transfer to an invalid account will display an error message "Invalid or non-existent account"', () => {
         cy.userregistration_second('jose2@qa.com','jose2','123456678', '123456678')
@@ -50,7 +56,7 @@ describe('Transfer', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transferinvalid(100,'-',999,1)
         cy.get('#modalText').should('include.text', 'Conta inválida ou inexistente')
         cy.closemodal()
@@ -61,7 +67,7 @@ describe('Transfer', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transferinvalid(100,'-','saas','as')
         cy.get('#modalText').should('include.text', 'Conta inválida ou inexistente')
         cy.closemodal()
@@ -72,7 +78,7 @@ describe('Transfer', () => {
         cy.login('jose2@qa.com','123456678')
         cy.url().should('eq','https://bugbank.netlify.app/home')
         cy.get('#textBalance').contains('R$ 1.000,00').should('exist')
-        cy.verifyaccount()
+        cy.verifyaccountsecond()
         cy.transferdescription(100)
         cy.get('#modalText').should('include.text', 'Description invalid')
         cy.closemodal()
