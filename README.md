@@ -323,6 +323,16 @@ These test cases provide a thorough coverage of the transfer feature, and I am c
     ```
 </details>
 
+## Next Changes
+
+
+- Implement ```cy.session``` : This will allow you to run tests in the context of a specific user session. This is useful for testing features that require authentication or that depend on the user's state.
+
+- Implement new test cases to second account: This will allow you to test the functionality of your application from the perspective of a different user. This is important for ensuring that your application is fair and equitable for all users.
+
+- Implement faker to generate data: This will allow you to generate fake data for your tests. This is useful for testing features that depend on data, such as search and sorting.
+
+
 ## Credits
 
 This software uses the following open source npm packages:
