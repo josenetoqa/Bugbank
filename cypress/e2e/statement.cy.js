@@ -108,4 +108,7 @@ describe('Statement', () => {
             cy.get('#textTransferValue').contains('R$ ' +num1 +',00').should('have.css', 'color', 'rgb(0, 128, 0)')
         })
     })
+    it('Verify that transactions without a comment are displayed with the comment "-"', () => {
+        
+    });
 });

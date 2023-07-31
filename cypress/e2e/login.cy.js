@@ -14,7 +14,7 @@ describe('Login', () => {
         cy.login('jos1111e@qa.com','12345667899')
         cy.get('#modalText').should('include.text', 'Usuário ou senha inválido')
     });
-    it('Verify that the email and password fields are required', () => {
+    it('Verify that the password field is required', () => {
         cy.login_no_password('jose@qa.com')
         cy.get('.kOeYBn > .input__warging').should('include.text','É campo obrigatório')
     });

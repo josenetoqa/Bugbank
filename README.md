@@ -76,7 +76,7 @@ These test cases below provide a comprehensive coverage of the login method.
         And I click on the "Login" button
         Then I should not be authorized to login
 
-      Scenario: Verify that the email and password fields are required
+      Scenario: Verify that the  password field is required
         Given I am on the login page
         When I leave the email field empty
         And I leave the password field empty
@@ -91,21 +91,55 @@ These test cases below provide a comprehensive coverage of the login method.
 
     ```
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2. Login test Cases:
 
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "dist/app-*.js"
-    +   }
-    + ],
-      "scripts": {
-        "build": "webpack ./webpack.config.js",
-    +   "size": "npm run build && size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
-
+    **Test Case 1:**
+    
+    **Description:** Verify that the email  field is required.
+    
+    **Steps:**
+    
+    1. Go to the login page.
+    2. Leave the email field empty.
+    3. Leave the password field empty.
+    4. Click on the "Login" button.
+    5. Verify that the error message "Username and password must be filled in" is displayed.
+    
+    **Test Case 2:**
+    
+    **Description:** Verify that invalid or un-registered users will not be authorized to login.
+    
+    **Steps:**
+    
+    1. Go to the login page.
+    2. Enter an invalid email address in the email field.
+    3. Enter an invalid password in the password field.
+    4. Click on the "Login" button.
+    5. Verify that the error message "Invalid username or password.
+    Please try again or verify your information!" is displayed.
+    
+    **Test Case 3:**
+    
+    **Description:** Verify that valid and registered users will be redirected to the home page.
+    
+    **Steps:**
+    
+    1. Go to the login page.
+    2. Enter a valid email address in the email field.
+    3. Enter a valid password in the password field.
+    4. Click on the "Login" button.
+    5. Verify that the user is authorized to login and is redirected to the home page.
+    
+    **Test Case 4:**
+    
+    **Description:** Verify that the email address field validates correctly.
+    
+    **Steps:**
+    
+    1. Go to the login page.
+    2. Enter an invalid email address in the email field.
+    3. Click on the "Login" button.
+    4. Verify that the error message "Invalid email address" is displayed.
 </details>
 
 ### Registration
@@ -176,20 +210,108 @@ These test cases below provide a thorough coverage of the registration feature.
           Then I should see an error message indicating that the email address is invalid
     ```
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2. Registration 
 
-    ```gherkin
-    + "size-limit": [
-    +   {
-    +     "path": "dist/app-*.js"
-    +   }
-    + ],
-      "scripts": {
-        "build": "webpack ./webpack.config.js",
-    +   "size": "npm run build && size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
+    **Test Case 4:**
+
+    **Description:** Verify that the name field is required.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Leave the name field empty.
+    3. Click on the "Register" button.
+    4. Verify that the error message "Name cannot be empty" is displayed.
+
+    **Test Case 5:**
+
+    **Description:** Verify that the email field is required.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Leave the email field empty.
+    3. Click on the "Register" button.
+    4. Verify that the error message "Email cannot be empty" is displayed.
+
+    **Test Case 6:**
+
+    **Description:** Verify that the password field is required.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Leave the password field empty.
+    3. Click on the "Register" button.
+    4. Verify that the error message "Password cannot be empty" is displayed.
+
+    **Test Case 7:**
+
+    **Description:** Verify that the confirmation password field is required.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Leave the confirmation password field empty.
+    3. Click on the "Register" button.
+    4. Verify that the error message "Confirm password cannot be empty" is displayed.
+
+    **Test Case 2:**
+
+    **Description:** Verify that the "Create account with balance" option creates an account with a balance of R$ 1,000.00.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Check the "Create account with balance" option.
+    3. Click on the "Register" button.
+    4. Verify that the account balance is R$ 1,000.00.
+
+    **Test Case 3:**
+
+    **Description:** Verify that the "Create account with balance" option creates an account with a balance of R$ 0.00.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Uncheck the "Create account with balance" option.
+    3. Click on the "Register" button.
+    4. Verify that the account balance is R$ 0.00.
+
+    **Test Case 8:**
+
+    **Description:** Verify that the password and confirmation password must be the same.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Enter a password in the password field.
+    3. Enter a different password in the confirmation password field.
+    4. Click on the "Register" button.
+    5. Verify that an error message is displayed indicating that the passwords do not match.
+
+    **Test Case 1:**
+
+    **Description:** Verify that a successfully registered account must display the account number that was created.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Enter all of the required information and click on the "Register" button.
+    3. Verify that the account number is displayed on the confirmation page.
+
+    These are just a few examples of automation test cases that you could use to test the registration functionality. You can add more test cases to cover other scenarios, such as testing the validation of the email address field, the minimum length of the password field, and so on.
+
+    **Test Case 9:**
+
+    **Description:** Verify that the email address field validates correctly.
+
+    **Steps:**
+
+    1. Go to the registration page.
+    2. Enter an invalid email address in the email field.
+    3. Click on the "Register" button.
+    4. Verify that an error message is displayed indicating that the email address is invalid.
 
 </details>
 
@@ -236,20 +358,58 @@ These test cases below provide a thorough coverage of the statement feature.
         Then the comment for the transaction should be "-"
     ```
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2. Statements test cases
 
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "dist/react.production-*.js"
-    +   }
-    + ],
-      "scripts": {
-        "build": "webpack ./scripts/rollup/build.js",
-    +   "size": "npm run build && size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
+    **Test Case 1:**
+
+    **Description:** Verify that the statement page displays the current available balance.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Click on the "Statement" link.
+    3. Verify that the statement page displays the current available balance.
+
+    **Test Case 2:**
+
+    **Description:** Verify that each transaction displays the date it was made, the type of transaction, and the amount.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Click on the "Statement" link.
+    3. Verify that each transaction displays the date it was made, the type of transaction, and the amount.
+
+    **Test Case 3:**
+
+    **Description:** Verify that the value of transactions that are out of the account is displayed in red and starts with the minus/negative sign (-).
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Click on the "Statement" link.
+    3. Verify that the value of transactions that are out of the account is displayed in red and starts with the minus/negative sign (-).
+
+    **Test Case 4:**
+
+    **Description:** Verify that the value of transactions that are in the account is displayed in green.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Click on the "Statement" link.
+    3. Verify that the value of transactions that are in the account is displayed in green.
+
+    **Test Case 5:**
+
+    **Description:** Verify that transactions without a comment are displayed with the comment "-".
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Click on the "Statement" link.
+    3. Verify that transactions without a comment are displayed with the comment "-".
+
 </details>
 
 
@@ -308,19 +468,88 @@ These test cases provide a thorough coverage of the transfer feature, and I am c
           Then I should be redirected to the statement
     ```
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2. Trasfer test cases 
 
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "index.js"
-    +   }
-    + ],
-      "scripts": {
-    +   "size": "size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
+    **Test Case 2:**
+
+    **Description:** Verify that transfer is only allowed when the balance is equal to or greater than the amount to be transferred.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Enter a valid account number in the "Account number" field.
+    3. Enter an amount that is greater than the balance in the "Amount" field.
+    4. Enter a description in the "Description" field.
+    5. Click on the "Transfer" button.
+    6. Verify that the error message "Insufficient balance" is displayed.
+
+    **Test Case 4:**
+
+    **Description:** Verify that an attempt to transfer to an invalid account will display an error message "Invalid or non-existent account".
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Enter an invalid account number in the "Account number" field.
+    3. Enter a valid amount in the "Amount" field.
+    4. Enter a description in the "Description" field.
+    5. Click on the "Transfer" button.
+    6. Verify that the error message "Invalid or non-existent account" is displayed.
+
+    **Test Case 5:**
+
+    **Description:** Verify that the account number and digit accept only numbers.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Enter a letter in the "Account number" field.
+    3. Enter a valid amount in the "Amount" field.
+    4. Enter a description in the "Description" field.
+    5. Click on the "Transfer" button.
+    6. Verify that the error message "Account number must be numeric" is displayed.
+
+    **Test Case 7:**
+
+    **Description:** Verify that the description field is a required field.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Enter a valid account number in the "Account number" field.
+    3. Enter a valid amount in the "Amount" field.
+    4. Leave the "Description" field empty.
+    5. Click on the "Transfer" button.
+    6. Verify that the error message "Description is required" is displayed.
+
+    **Test Case 6:**
+
+    **Description:** Verify that the transfer value cannot be equal to or less than zero.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Enter a valid account number in the "Account number" field.
+    3. Enter a value that is equal to or less than zero in the "Amount" field.
+    4. Enter a description in the "Description" field.
+    5. Click on the "Transfer" button.
+    6. Verify that the error message "Transfer value must be greater than zero" is displayed.
+
+    **Test Case 1:**
+
+    **Description:** Verify that upon successful transfer, the amount from the account should be debited and the message "Transfer successfully completed" should be displayed.
+
+    **Steps:**
+
+    1. Login to the application as a valid user.
+    2. Enter a valid account number in the "Account number" field.
+    3. Enter a valid amount in the "Amount" field.
+    4. Enter a description in the "Description" field.
+    5. Click on the "Transfer" button.
+    6. Verify that the amount from the account is debited.
+    7. Verify that the message "Transfer successfully completed" is displayed.
+    8. Verify that you are redirected to the statement.
+
 </details>
 
 ## Next Changes
